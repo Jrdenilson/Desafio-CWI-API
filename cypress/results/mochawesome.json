@@ -1,0 +1,162 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 4,
+    "passes": 4,
+    "pending": 0,
+    "failures": 0,
+    "start": "2022-11-17T18:47:56.313Z",
+    "end": "2022-11-17T18:48:20.949Z",
+    "duration": 24636,
+    "testsRegistered": 4,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "81662159-e388-4338-87d6-bb7a25951a40",
+      "title": "",
+      "fullFile": "cypress\\api\\wooComerce\\productReview.cy.js",
+      "file": "cypress\\api\\wooComerce\\productReview.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "05ae52f7-ee3e-4359-b303-6d1707d1ed9a",
+          "title": "Product Review ",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Create Product Review - Aceitação",
+              "fullTitle": "Product Review  Create Product Review - Aceitação",
+              "timedOut": null,
+              "duration": 6024,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const review = _faker.faker.word.adjective();\ncy.postProductReviewWooCommerce(product_id, review, reviewer, reviewer_email, rating).should(postProductReviewResponse => {\n  const id = postProductReviewResponse.body.id;\n  expect(postProductReviewResponse.status).to.be.eq(201);\n  expect(postProductReviewResponse.body.product_id).to.be.eq(product_id);\n  cy.deleteProductReviewWooCommerce(id).should(deleteProductReviewResponse => {\n    expect(deleteProductReviewResponse.status).to.be.eq(200);\n    expect(deleteProductReviewResponse.body.deleted).to.be.eq(true);\n  });\n});",
+              "err": {},
+              "uuid": "be70bb45-d2b8-403c-8e97-a0dee36951f4",
+              "parentUUID": "05ae52f7-ee3e-4359-b303-6d1707d1ed9a",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Cadastro de Product Review - Contrato",
+              "fullTitle": "Product Review  Cadastro de Product Review - Contrato",
+              "timedOut": null,
+              "duration": 4799,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const review = _faker.faker.word.adjective();\ncy.postProductReviewWooCommerce(product_id, review, reviewer, reviewer_email, rating).should(postProductReviewResponse => {\n  const id = postProductReviewResponse.body.id;\n  return _productreview.default.validateAsync(postProductReviewResponse.body).then(cy.deleteProductReviewWooCommerce(id).should(deleteProductReviewResponse => {\n    expect(deleteProductReviewResponse.status).to.be.eq(200);\n    expect(deleteProductReviewResponse.body.deleted).to.be.eq(true);\n  }));\n});",
+              "err": {},
+              "uuid": "c7272ae2-8760-4fb5-9fe7-993ad6ea9735",
+              "parentUUID": "05ae52f7-ee3e-4359-b303-6d1707d1ed9a",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Update Product Review - Aceitação",
+              "fullTitle": "Product Review  Update Product Review - Aceitação",
+              "timedOut": null,
+              "duration": 7771,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const review = _faker.faker.word.adjective();\nconst newrating = Math.floor(Math.random() * 100);\ncy.postProductReviewWooCommerce(product_id, review, reviewer, reviewer_email, rating).should(response => {\n  const id = response.body.id;\n  cy.putProductReviewWooCommerce(newrating, id).should(putProductReviewResponse => {\n    expect(putProductReviewResponse.status).to.be.eq(200);\n    expect(putProductReviewResponse.body.id).to.be.eq(id);\n    expect(putProductReviewResponse.body.rating).to.be.eq(newrating);\n    cy.deleteProductReviewWooCommerce(id).should(deleteProductReviewResponse => {\n      expect(deleteProductReviewResponse.status).to.be.eq(200);\n      expect(deleteProductReviewResponse.body.deleted).to.be.eq(true);\n    });\n  });\n});",
+              "err": {},
+              "uuid": "05a11573-c07a-4b89-b377-9b3af912fbb3",
+              "parentUUID": "05ae52f7-ee3e-4359-b303-6d1707d1ed9a",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Delete shipping zone - Aceitação",
+              "fullTitle": "Product Review  Delete shipping zone - Aceitação",
+              "timedOut": null,
+              "duration": 5880,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const review = _faker.faker.word.adjective();\ncy.postProductReviewWooCommerce(product_id, review, reviewer, reviewer_email, rating).should(response => {\n  cy.deleteProductReviewWooCommerce(response.body.id).should(deleteProductReviewResponse => {\n    expect(deleteProductReviewResponse.status).to.be.eq(200);\n    expect(deleteProductReviewResponse.body.deleted).to.be.eq(true);\n  });\n});",
+              "err": {},
+              "uuid": "63445bef-0156-41c4-a827-86c7b69b2332",
+              "parentUUID": "05ae52f7-ee3e-4359-b303-6d1707d1ed9a",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "be70bb45-d2b8-403c-8e97-a0dee36951f4",
+            "c7272ae2-8760-4fb5-9fe7-993ad6ea9735",
+            "05a11573-c07a-4b89-b377-9b3af912fbb3",
+            "63445bef-0156-41c4-a827-86c7b69b2332"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 24474,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/results",
+        "overwrite": true,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

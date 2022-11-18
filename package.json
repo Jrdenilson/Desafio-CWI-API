@@ -1,0 +1,32 @@
+{
+  "name": "desafio-cwi-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "cy:run:allure": "npx cypress run --env allure=true",
+    "allure:generate": "allure generate allure-results --clean",
+    "allure:open": "allure open allure-report",
+    "test:allure": "npm-run-all -s -c cy:run:allure allure:generate",
+    "cy:run:mochawesome": "npx cypress run --reporter mochawesome --reporter-options reportDir=cypress/results,overwrite=true,html=false,json=true",
+    "mochawesome-merge:mochawesome.json": "npx mochawesome-merge 'cypress/results/*.json' > mochawesome.json",
+    "marge:mochawesome.json": "npx marge mochawesome.json",
+    "clean:mochawesome.json:cmd": "del mochawesome.json",
+    "test:mochawesome": "npm-run-all -s -c clean:mochawesome.json:cmd cy:run:mochawesome mochawesome-merge:mochawesome.json marge:mochawesome.json "
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@faker-js/faker": "^7.6.0",
+    "@shelex/cypress-allure-plugin": "^2.34.0",
+    "allure-commandline": "^2.20.1",
+    "cypress": "^11.1.0",
+    "joi": "^17.7.0"
+  },
+  "devDependencies": {
+    "mochawesome": "^7.1.3",
+    "mochawesome-merge": "^4.2.1",
+    "mochawesome-report-generator": "^6.2.0",
+    "npm-run-all": "^4.1.5"
+  }
+}

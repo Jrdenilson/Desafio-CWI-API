@@ -1,0 +1,5 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Thu Nov 17 15:22:50 BRT 2022","Thu Nov 17 15:22:56 BRT 2022","5859","","Product Review ","","","","Cadastro de Product Review - Contrato",""
+"passed","Thu Nov 17 15:23:05 BRT 2022","Thu Nov 17 15:23:11 BRT 2022","6188","","Product Review ","","","","Delete shipping zone - Aceitação",""
+"passed","Thu Nov 17 15:22:43 BRT 2022","Thu Nov 17 15:22:50 BRT 2022","7677","","Product Review ","","","","Create Product Review - Aceitação",""
+"passed","Thu Nov 17 15:22:56 BRT 2022","Thu Nov 17 15:23:05 BRT 2022","8404","","Product Review ","","","","Update Product Review - Aceitação",""
