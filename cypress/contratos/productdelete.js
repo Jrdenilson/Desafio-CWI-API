@@ -1,5 +1,6 @@
 import Joi from "joi";
-
+/** Esquema para validação de contrato da resposta do metodo DELETE
+ */
 const productDeleteSchema = Joi.object({
     deleted: Joi.boolean().required(),
     previous: Joi.object({

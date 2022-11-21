@@ -47,25 +47,26 @@ describe('Product Review - WooCommerce', () => {
  */
     it('Update Product Review - Aceitação', () => {
         const review = faker.word.adjective()
-        const newrating = Math.floor(Math.random()*10);
+        const newrating = Math.floor(Math.random()*5)+1;
             cy.postProductReviewWooCommerce(product_id, review, reviewer, reviewer_email, rating).should((response) => {
                 const id = response.body.id
                     cy.putProductReviewWooCommerce(newrating, id).should((putProductReviewResponse) => {
                         expect(putProductReviewResponse.status).to.be.eq(statusFixtures.ok)
                         expect(putProductReviewResponse.body.id).to.be.eq(id)
                         expect(putProductReviewResponse.body.rating).to.be.eq(newrating)
+                        return productreviewSchema.validateAsync(putProductReviewResponse.body).then(
                             cy.deleteProductReviewWooCommerce(id).should((deleteProductReviewResponse) => {
                                 return productDeleteSchema.validateAsync(deleteProductReviewResponse.body)           
-            })
+            }))
         })
     })
     })
 
-/** TQuarto teste, utilizado para validar o metodo do tipo DELETE:
+/** Quarto teste, utilizado para validar o metodo do tipo DELETE:
  * recebe por parametro o id do review a ser deletado
  * Retorna status 200 se for deletado com sucesso
  */
-    it.only('Delete shipping zone - Aceitação', () => {
+    it('Delete shipping zone - Aceitação', () => {
         const review = faker.word.adjective()
             cy.postProductReviewWooCommerce(product_id, review, reviewer, reviewer_email, rating).should((response) => {
                 cy.deleteProductReviewWooCommerce(response.body.id).should((deleteProductReviewResponse) => {

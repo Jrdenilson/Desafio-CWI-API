@@ -1,5 +1,5 @@
 import Joi from "joi";
-
+/** Esquema para validação de contrato do metodo POST e PUT */
 const productreviewSchema = Joi.object({
     id: Joi.number().required(),
     date_created: Joi.date().required(),
