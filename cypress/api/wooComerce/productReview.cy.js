@@ -23,9 +23,7 @@ describe('Product Review - WooCommerce', () => {
                 const id = postProductReviewResponse.body.id;
                     expect(postProductReviewResponse.status).to.be.eq(statusFixtures.created)
                     expect(postProductReviewResponse.body.product_id).to.be.eq(product_id)
-                        cy.deleteProductReviewWooCommerce(id).should((deleteProductReviewResponse) => {
-                            return productDeleteSchema.validateAsync(deleteProductReviewResponse.body)
-            })
+                        cy.deleteProductReviewWooCommerce(id)
             
             })
     })
@@ -36,9 +34,7 @@ describe('Product Review - WooCommerce', () => {
             cy.postProductReviewWooCommerce(product_id, review, reviewer, reviewer_email, rating).should((postProductReviewResponse) => {
                 const id = postProductReviewResponse.body.id;
                 return productreviewSchema.validateAsync(postProductReviewResponse.body).then(
-                    cy.deleteProductReviewWooCommerce(id).should((deleteProductReviewResponse) => {
-                        return productDeleteSchema.validateAsync(deleteProductReviewResponse.body)       
-            }))
+                    cy.deleteProductReviewWooCommerce(id))
         })
     })
 /** Terceiro teste, utilizado para validar o metodo do tipo PUT:
@@ -55,9 +51,7 @@ describe('Product Review - WooCommerce', () => {
                         expect(putProductReviewResponse.body.id).to.be.eq(id)
                         expect(putProductReviewResponse.body.rating).to.be.eq(newrating)
                         return productreviewSchema.validateAsync(putProductReviewResponse.body).then(
-                            cy.deleteProductReviewWooCommerce(id).should((deleteProductReviewResponse) => {
-                                return productDeleteSchema.validateAsync(deleteProductReviewResponse.body)           
-            }))
+                            cy.deleteProductReviewWooCommerce(id))
         })
     })
     })
